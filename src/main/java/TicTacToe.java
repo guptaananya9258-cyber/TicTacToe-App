@@ -1,37 +1,26 @@
-import java.util.Random;
+import java.util.Scanner;
 
-public class TicTacToeUC2 {
+public class TicTacToe {
+
+    // Method to get user input (Separation of Concerns)
+    public static int getUserSlot() {
+        Scanner sc = new Scanner(System.in);
+
+        System.out.print("Enter a slot number (1-9): ");
+
+        // 1. User Input Handling
+        int slot = sc.nextInt();
+
+        // 2. Return the slot value to game logic
+        return slot;
+    }
 
     public static void main(String[] args) {
 
-        // Game State Variables
-        char player1Symbol, player2Symbol;
-        char currentPlayer;
+        // Call method to get input
+        int chosenSlot = getUserSlot();
 
-        // 1. Random Number Generation (Toss)
-        Random rand = new Random();
-        int toss = rand.nextInt(2); // 0 or 1
-
-        // 2. Conditional Logic for assigning symbols & first turn
-        if (toss == 0) {
-            player1Symbol = 'X';
-            player2Symbol = 'O';
-            currentPlayer = player1Symbol;
-
-            System.out.println("Player 1 wins the toss!");
-            System.out.println("Player 1 is X and will start first.");
-            System.out.println("Player 2 is O.");
-        } else {
-            player1Symbol = 'O';
-            player2Symbol = 'X';
-            currentPlayer = player2Symbol;
-
-            System.out.println("Player 2 wins the toss!");
-            System.out.println("Player 2 is X and will start first.");
-            System.out.println("Player 1 is O.");
-        }
-
-        // 3. Store & Display Current Player Info
-        System.out.println("\nCurrent Turn: " + currentPlayer);
+        // Display entered value (for testing)
+        System.out.println("You selected slot: " + chosenSlot);
     }
 }
